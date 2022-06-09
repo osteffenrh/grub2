@@ -1,3 +1,8 @@
+This branch contains the patches from Hernan Gatta for unlocking an
+encrypted /boot partition using a (v)TPM ontop of upstream grub.
+See <https://lists.gnu.org/archive/html/grub-devel/2022-02/msg00006.html>.
+
+--- Original Readme ---
 This is GRUB 2, the second version of the GRand Unified Bootloader.
 GRUB 2 is rewritten from scratch to make GNU GRUB cleaner, safer, more
 robust, more powerful, and more portable.
