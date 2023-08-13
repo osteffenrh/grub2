@@ -119,7 +119,7 @@ grub_cmd_probe (grub_extcmd_context_t ctxt, int argc, char **args)
 	  if (grub_strcmp(dev->disk->partition->partmap->name, "gpt") == 0)
 	    {
 	      struct grub_gpt_partentry entry;
-	      grub_guid_t *guid;
+	      grub_guid_t guid;
 
 	      if (grub_disk_read(disk, p->offset, p->index, sizeof(entry), &entry))
 		{
@@ -129,11 +129,11 @@ grub_cmd_probe (grub_extcmd_context_t ctxt, int argc, char **args)
 		  grub_error_pop ();
 		  return grub_errno;
 		}
-	      guid = &entry.guid;
-	      guid->data1 = grub_le_to_cpu32 (guid->data1);
-	      guid->data2 = grub_le_to_cpu16 (guid->data2);
-	      guid->data3 = grub_le_to_cpu16 (guid->data3);
-	      grub_snprintf (val, sizeof(val), "%pG", guid);
+	      guid = entry.guid;
+	      guid.data1 = grub_le_to_cpu32 (guid.data1);
+	      guid.data2 = grub_le_to_cpu16 (guid.data2);
+	      guid.data3 = grub_le_to_cpu16 (guid.data3);
+	      grub_snprintf (val, sizeof(val), "%pG", &guid);
 	    }
 	  else if (grub_strcmp(dev->disk->partition->partmap->name, "msdos") == 0)
 	    {

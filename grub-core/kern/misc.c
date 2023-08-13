@@ -1068,22 +1068,22 @@ grub_vsnprintf_real (char *str, grub_size_t max_len, const char *fmt0,
 	  if (*(fmt) == 'G')
 	    {
 	      ++fmt;
-	      grub_guid_t *guid = (grub_guid_t *)(grub_addr_t) curarg;
-	      write_number (str, &count, max_len, 8, 0, '0', 'x', guid->data1);
+	      grub_packed_guid_t *guid = (grub_packed_guid_t *)(grub_addr_t) curarg;
+	      write_number (str, &count, max_len, 8, 0, '0', 'x', guid->inner.data1);
 	      write_char (str, &count, max_len, '-');
-	      write_number (str, &count, max_len, 4, 0, '0', 'x', guid->data2);
+	      write_number (str, &count, max_len, 4, 0, '0', 'x', guid->inner.data2);
 	      write_char (str, &count, max_len, '-');
-	      write_number (str, &count, max_len, 4, 0, '0', 'x', guid->data3);
+	      write_number (str, &count, max_len, 4, 0, '0', 'x', guid->inner.data3);
 	      write_char (str, &count, max_len, '-');
-	      write_number (str, &count, max_len, 2, 0, '0', 'x', guid->data4[0]);
-	      write_number (str, &count, max_len, 2, 0, '0', 'x', guid->data4[1]);
+	      write_number (str, &count, max_len, 2, 0, '0', 'x', guid->inner.data4[0]);
+	      write_number (str, &count, max_len, 2, 0, '0', 'x', guid->inner.data4[1]);
 	      write_char (str, &count, max_len, '-');
-	      write_number (str, &count, max_len, 2, 0, '0', 'x', guid->data4[2]);
-	      write_number (str, &count, max_len, 2, 0, '0', 'x', guid->data4[3]);
-	      write_number (str, &count, max_len, 2, 0, '0', 'x', guid->data4[4]);
-	      write_number (str, &count, max_len, 2, 0, '0', 'x', guid->data4[5]);
-	      write_number (str, &count, max_len, 2, 0, '0', 'x', guid->data4[6]);
-	      write_number (str, &count, max_len, 2, 0, '0', 'x', guid->data4[7]);
+	      write_number (str, &count, max_len, 2, 0, '0', 'x', guid->inner.data4[2]);
+	      write_number (str, &count, max_len, 2, 0, '0', 'x', guid->inner.data4[3]);
+	      write_number (str, &count, max_len, 2, 0, '0', 'x', guid->inner.data4[4]);
+	      write_number (str, &count, max_len, 2, 0, '0', 'x', guid->inner.data4[5]);
+	      write_number (str, &count, max_len, 2, 0, '0', 'x', guid->inner.data4[6]);
+	      write_number (str, &count, max_len, 2, 0, '0', 'x', guid->inner.data4[7]);
 	      break;
 	    }
 	  else

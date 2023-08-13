@@ -1388,7 +1388,7 @@ struct grub_efi_configuration_table
 {
   grub_guid_t vendor_guid;
   void *vendor_table;
-} GRUB_PACKED;
+};
 typedef struct grub_efi_configuration_table grub_efi_configuration_table_t;
 
 #define GRUB_EFIEMU_SYSTEM_TABLE_SIGNATURE 0x5453595320494249LL
