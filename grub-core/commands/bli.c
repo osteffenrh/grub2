@@ -44,10 +44,13 @@ get_part_uuid (const char *device_name, char **part_uuid)
   grub_disk_t disk = NULL;
   struct grub_gpt_partentry entry;
 
+  grub_dprintf (MODNAME, "device_name = %s\n", device_name);
   device = grub_device_open (device_name);
   if (device == NULL)
     return grub_error (grub_errno, N_("cannot open device: %s"), device_name);
 
+
+  grub_dprintf (MODNAME, "device->disk->name = %s\n", device->disk->name);
   disk = grub_disk_open (device->disk->name);
   if (disk == NULL)
     {
@@ -113,6 +116,8 @@ set_loader_device_part_uuid (void)
 
 GRUB_MOD_INIT (bli)
 {
+    grub_gpt_partition_map_iterate(NULL, NULL, NULL);
+
   grub_efi_set_variable_to_string ("LoaderInfo", &bli_vendor_guid, PACKAGE_STRING,
 				   GRUB_EFI_VARIABLE_BOOTSERVICE_ACCESS |
 				   GRUB_EFI_VARIABLE_RUNTIME_ACCESS);
